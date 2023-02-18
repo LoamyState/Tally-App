@@ -1,24 +1,234 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cuO-fU-rMs">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tally App-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tally_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zih-4s-ZlW">
+                                <rect key="frame" x="20" y="249.66666666666663" width="353" height="353"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zih-4s-ZlW" secondAttribute="height" multiplier="1:1" id="4r7-XX-rui"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" Tap to Count" image="arrow.up.circle" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="filled" image="arrow.up.circle" catalog="system" title=" Tap to Count" cornerStyle="medium">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="34"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="increaseCounter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="heI-SK-2tq"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zih-4s-ZlW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="fgC-39-HnQ"/>
+                            <constraint firstItem="zih-4s-ZlW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jka-dF-djW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zih-4s-ZlW" secondAttribute="trailing" constant="20" id="oq5-Ju-IRd"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Tally App" id="rNG-ic-VrF">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="Y2r-Vy-8AH">
+                            <connections>
+                                <action selector="resetCounter:" destination="BYZ-38-t0r" id="WAa-QC-osd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="line.3.horizontal" catalog="system" id="wGb-xE-6mZ">
+                            <connections>
+                                <segue destination="Rmj-Th-n6N" kind="presentation" id="2F4-OE-BXM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="counterButton" destination="zih-4s-ZlW" id="nlg-Pw-GBe"/>
+                        <outlet property="navigationBarItem" destination="rNG-ic-VrF" id="Her-GD-hoS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="834.35114503816794" y="3.5211267605633805"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="BB1-Vh-4l4">
+            <objects>
+                <viewController modalPresentationStyle="pageSheet" id="Rmj-Th-n6N" customClass="SettingsViewController" customModule="Tally_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6lp-Un-hWi">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZS-93-wE5">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                                <items>
+                                    <navigationItem title="Settings" id="rND-fy-3CL">
+                                        <barButtonItem key="leftBarButtonItem" title="Defaults" id="fHZ-Oy-sbm">
+                                            <connections>
+                                                <action selector="resetCounterSettings:" destination="Rmj-Th-n6N" id="Ukf-MD-Q8D"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="udU-xK-E48">
+                                            <connections>
+                                                <action selector="dismissView:" destination="Rmj-Th-n6N" id="GC4-57-u3v"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="I6m-QK-Mem">
+                                <rect key="frame" x="16" y="72" width="361" height="168"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DLo-tp-VZe">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ugK-Vo-HdD"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Count up"/>
+                                            <segment title="Count down"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="changeCountDirection:" destination="Rmj-Th-n6N" eventType="valueChanged" id="eX6-lq-eGB"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="rn6-eS-K5k">
+                                        <rect key="frame" x="0.0" y="46" width="361" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="077-aO-cSX">
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u0o-by-6P6">
+                                                <rect key="frame" x="124" y="0.0" width="127" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <action selector="changeIncrementWithTextField:" destination="Rmj-Th-n6N" eventType="editingDidEnd" id="Ptp-MJ-4Cj"/>
+                                                </connections>
+                                            </textField>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="RIn-tV-uzq">
+                                                <rect key="frame" x="267" y="0.0" width="94" height="30"/>
+                                                <connections>
+                                                    <action selector="changeIncrementWithCountByStepper:" destination="Rmj-Th-n6N" eventType="valueChanged" id="ZD7-gC-3nL"/>
+                                                </connections>
+                                            </stepper>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Dl6-ST-ExG">
+                                        <rect key="frame" x="0.0" y="92" width="361" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-2r-JgD">
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="INO-88-Idb">
+                                                <rect key="frame" x="124" y="0.0" width="127" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="changeResetValueWithTextField:" destination="Rmj-Th-n6N" eventType="editingDidEnd" id="yTP-nn-rAY"/>
+                                                </connections>
+                                            </textField>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vQM-L8-h4U">
+                                                <rect key="frame" x="267" y="0.0" width="94" height="30"/>
+                                                <connections>
+                                                    <action selector="changeResetValueWithStepper:" destination="Rmj-Th-n6N" eventType="valueChanged" id="E6B-PS-Nke"/>
+                                                </connections>
+                                            </stepper>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="vcR-3g-CrD">
+                                        <rect key="frame" x="0.0" y="138" width="361" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Counter name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpb-Wf-ZnX">
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gc-5N-aap">
+                                                <rect key="frame" x="124" y="0.0" width="237" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="changeCounterName:" destination="Rmj-Th-n6N" eventType="editingDidEnd" id="dgw-XX-Z46"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="OjW-2r-JgD" firstAttribute="width" secondItem="077-aO-cSX" secondAttribute="width" id="MNh-1L-8Hc"/>
+                                    <constraint firstItem="Kpb-Wf-ZnX" firstAttribute="width" secondItem="077-aO-cSX" secondAttribute="width" id="pVY-3h-Ha3"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ehg-s3-Odu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ehg-s3-Odu" firstAttribute="trailing" secondItem="I6m-QK-Mem" secondAttribute="trailing" constant="16" id="Iqj-R8-b5J"/>
+                            <constraint firstItem="vZS-93-wE5" firstAttribute="top" secondItem="Ehg-s3-Odu" secondAttribute="top" id="Ltw-5F-SOR"/>
+                            <constraint firstItem="Ehg-s3-Odu" firstAttribute="trailing" secondItem="vZS-93-wE5" secondAttribute="trailing" id="NI5-WW-zeS"/>
+                            <constraint firstItem="I6m-QK-Mem" firstAttribute="leading" secondItem="Ehg-s3-Odu" secondAttribute="leading" constant="16" id="Q9K-0B-oBo"/>
+                            <constraint firstItem="vZS-93-wE5" firstAttribute="leading" secondItem="Ehg-s3-Odu" secondAttribute="leading" id="eN0-pQ-uJB"/>
+                            <constraint firstItem="I6m-QK-Mem" firstAttribute="top" secondItem="vZS-93-wE5" secondAttribute="bottom" constant="16" id="mO7-Is-GMc"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="393" height="783"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="countByStepper" destination="RIn-tV-uzq" id="qYu-jM-UgA"/>
+                        <outlet property="countByTextField" destination="u0o-by-6P6" id="W9D-Od-eQq"/>
+                        <outlet property="countDirectionSegmentedControl" destination="DLo-tp-VZe" id="dQQ-e9-l4B"/>
+                        <outlet property="counterNameTextField" destination="3gc-5N-aap" id="rAv-dg-bBr"/>
+                        <outlet property="resetValueStepper" destination="vQM-L8-h4U" id="wp1-04-CPm"/>
+                        <outlet property="resetValueTextField" destination="INO-88-Idb" id="vo3-Lq-FZ9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FZ4-Bk-NqI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1694" y="4"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xZR-t0-fxR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cuO-fU-rMs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2as-UQ-RRP">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ZM5-Rn-POB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v3q-gu-pnc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-92.36641221374046" y="3.5211267605633805"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.up.circle" catalog="system" width="128" height="123"/>
+        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
